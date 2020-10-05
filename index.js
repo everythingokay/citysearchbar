@@ -49,37 +49,60 @@ const cities = [
     {name: "Philadelphia", population: 1526006, landmark: "Independence Hall"},
 ];
 
-const result = document.querySelector("#result");
-const search = document.querySelector("#search");
 const submit = document.querySelector("#submit");
-const newSearch = document.querySelector("#new-search");
+const result = document.querySelector("#result");
 
 const allCities = (all) => {
     all.map((city) => {
         result.innerHTML += 
             `<div>
-            Name: ${city.name}, 
-            Population: ${city.population}, 
-            Landmark: ${city.landmark}
+            <span class="city-info">City</span>: ${city.name}, 
+            <span class="city-info">Population</span>: ${commafy(city.population)}, 
+            <span class="city-info">Landmark</span>: ${city.landmark}
             </div>`;
     });
 }
-allCities(cities)
+allCities(cities);
 
 
+function commafy(num) {
+    var str = num.toString().split('.');
 
-// document.addEventListener("keyup", filterCities);
-// search.value.toLowerCase();
+    if (str[0].length >= 5) {
+        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (str[1] && str[1].length >= 5) {
+        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+    }
 
-const filterCities = () => {
+    return str.join('.');
+}
 
-    newSearch.innerHTML = "";
 
-    cities.filter((city) => {
-        if (search.value === city.name) {
-            newSearch.innerHTML += `<div>${city.name}</div>`
-        }
-    });
+let filterCities = () => {
+    const search = document.querySelector("#search");
+    const searchTerm = search.value.toLowerCase();
+
+    let cityUpdate = cities.filter(city => city.name.toLowerCase().includes(searchTerm));
+
+    result.innerHTML = "";
+
+    if (cityUpdate.length !== 0) {
+        cityUpdate.forEach((cityUpdate) => {
+            result.innerHTML += 
+                `<div>
+                    <span class="city-info">City</span>: ${cityUpdate.name}, 
+                    <span class="city-info">Population</span>: ${commafy(cityUpdate.population)}, 
+                    <span class="city-info">Landmark</span>: ${cityUpdate.landmark}
+                </div>`;
+        });
+    }
 }
 
 submit.addEventListener("click", filterCities);
+document.addEventListener("keyup", filterCities);
+
+
+// cities.population.sort(function(a, b) {
+//     return a - b;
+//   });

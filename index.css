@@ -10,11 +10,16 @@
     font-size: 16px;
 }
 
-#result, #new-search {
+#result {
     border: 0px solid #000;
-    width: 600px;
     margin: 30px;
     padding: 20px;
     font-family: Helvetica, sans-serif;
     font-size: 16px;
+}
+
+.city-info {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
 }
