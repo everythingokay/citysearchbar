@@ -50,10 +50,31 @@ const cities = [
 ];
 
 const result = document.querySelector("#result");
+const search = document.querySelector("#search");
+const submit = document.querySelector("#submit");
 
-function majorCities(capitals) {
-    capitals.forEach(function(place) {
-            result.innerHTML += `<div>Name: ${place.name}, Population: ${place.population}, Landmark: ${place.landmark}</div>`;
+const allCities = (all) => {
+    all.map((city) => {
+            result.innerHTML += 
+            `<div>Name: ${city.name}, 
+            Population: ${city.population}, 
+            Landmark: ${city.landmark}</div>`;
         });
 }
-majorCities(cities)
+allCities(cities)
+
+
+
+document.addEventListener("keyup", filterCities);
+const searchInput = search.value.toLowerCase();
+
+const filterCities = (all) => {
+    return all.filter((city) => {
+      if (searchInput.value === city.name) {
+        specificCity = "WHATEVER"
+      }
+      console.log(specificCity);
+    });
+}
+
+filterCities(cities)
