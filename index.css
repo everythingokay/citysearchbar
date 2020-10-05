@@ -5,17 +5,12 @@
     padding: 20px;
 }
 
-#submit {
+#submit, #search {
     font-family: Helvetica, sans-serif;
     font-size: 16px;
 }
 
-#search {
-    font-family: Helvetica, sans-serif;
-    font-size: 16px;
-}
-
-#result {
+#result, #new-search {
     border: 0px solid #000;
     width: 600px;
     margin: 30px;

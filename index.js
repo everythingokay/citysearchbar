@@ -52,29 +52,34 @@ const cities = [
 const result = document.querySelector("#result");
 const search = document.querySelector("#search");
 const submit = document.querySelector("#submit");
+const newSearch = document.querySelector("#new-search");
 
 const allCities = (all) => {
     all.map((city) => {
-            result.innerHTML += 
-            `<div>Name: ${city.name}, 
+        result.innerHTML += 
+            `<div>
+            Name: ${city.name}, 
             Population: ${city.population}, 
-            Landmark: ${city.landmark}</div>`;
-        });
+            Landmark: ${city.landmark}
+            </div>`;
+    });
 }
 allCities(cities)
 
 
 
-document.addEventListener("keyup", filterCities);
-const searchInput = search.value.toLowerCase();
+// document.addEventListener("keyup", filterCities);
+// search.value.toLowerCase();
 
-const filterCities = (all) => {
-    return all.filter((city) => {
-      if (searchInput.value === city.name) {
-        specificCity = "WHATEVER"
-      }
-      console.log(specificCity);
+const filterCities = () => {
+
+    newSearch.innerHTML = "";
+
+    cities.filter((city) => {
+        if (search.value === city.name) {
+            newSearch.innerHTML += `<div>${city.name}</div>`
+        }
     });
 }
 
-filterCities(cities)
+submit.addEventListener("click", filterCities);
