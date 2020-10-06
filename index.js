@@ -49,6 +49,13 @@ const cities = [
     {name: "Philadelphia", population: 1526006, landmark: "Independence Hall"},
 ];
 
+const sort = document.querySelector("#sort");
+sort.addEventListener("click", function() {
+    result.innerHTML = "";
+    cities.sort((a, b) => b.population - a.population);
+    allCities(cities);
+});
+
 const submit = document.querySelector("#submit");
 const result = document.querySelector("#result");
 
@@ -101,8 +108,3 @@ let filterCities = () => {
 
 submit.addEventListener("click", filterCities);
 document.addEventListener("keyup", filterCities);
-
-
-// cities.population.sort(function(a, b) {
-//     return a - b;
-//   });
