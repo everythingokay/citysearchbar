@@ -71,7 +71,6 @@ const allCities = (all) => {
 }
 allCities(cities);
 
-
 function commafy(num) {
     var str = num.toString().split('.');
 
@@ -85,7 +84,6 @@ function commafy(num) {
     return str.join('.');
 }
 
-
 let filterCities = () => {
     const search = document.querySelector("#search");
     const searchTerm = search.value.toLowerCase();
@@ -98,9 +96,9 @@ let filterCities = () => {
         cityUpdate.forEach((cityUpdate) => {
             result.innerHTML += 
                 `<div>
-                    <span class="city-info">City</span>: ${cityUpdate.name}, 
-                    <span class="city-info">Population</span>: ${commafy(cityUpdate.population)}, 
-                    <span class="city-info">Landmark</span>: ${cityUpdate.landmark}
+                <span class="city-info">City</span>: ${cityUpdate.name}, 
+                <span class="city-info">Population</span>: ${commafy(cityUpdate.population)}, 
+                <span class="city-info">Landmark</span>: ${cityUpdate.landmark}
                 </div>`;
         });
     }
